@@ -1,4 +1,4 @@
-/*---    FCFS algorithm    ---*/
+/*---    First Come First Serve (FCFS) algorithm    ---*/
 
 #include<stdlib.h>
 #include<stdio.h>
