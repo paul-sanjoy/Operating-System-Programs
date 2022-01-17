@@ -71,3 +71,43 @@ void timeCalculations(int n, int p_details[][6])
         }
     }
 }
+
+int main()
+{
+    int n, i ;
+    
+	/* take input*/
+    printf("Enter the number of Processes : ");
+    scanf("%d", &n);
+     
+    for(i=0; i<n; i++)
+    {
+        printf("Process %d :\n", i + 1);
+        p_details[i][0] = i;
+        printf("Enter Arrival Time : ");
+        scanf("%d", &p_details[i][1]);
+        printf("Enter Burst Time : ");
+        scanf("%d", &p_details[i][2]);
+    }
+    
+    /*operations*/
+    sortArrivalTime(n, p_details);
+    timeCalculations(n, p_details);
+    
+    /*print output*/
+    printf("\nGantt chart :\n\n");
+    for (i = 0; i < n; i ++)
+    {
+    	printf("process %d : (%d - %d) \n", p_details[i][0] + 1, p_details[i][1] + p_details[i][4], p_details[i][1] + p_details[i][4] + p_details[i][2]);
+    }
+    
+    printf("\n\n");
+    
+    for(i=0; i<n; i++)
+    {
+        printf("Waiting time of process %d : %d unit\n", p_details[i][0] + 1, p_details[i][4]);
+    }
+    
+    return 0;
+}
+
