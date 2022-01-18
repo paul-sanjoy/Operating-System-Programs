@@ -1,4 +1,4 @@
-/*---   SJF (non-preemptive)   ---*/
+/*---   Shortest Job First (SJF) (non-preemptive)   ---*/
 
 #include<stdio.h>
 
