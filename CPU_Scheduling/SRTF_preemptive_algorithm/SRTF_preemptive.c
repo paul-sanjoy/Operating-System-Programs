@@ -56,4 +56,24 @@ int main()
 		//each job perform for one unit of time
 		curr_time ++;
 		
+		//Print the gantt chart
+		printf("process %d: (%d-%d);\t", next+1, curr_time - 1, curr_time);
 		
+		//for the processes that are arived and waiting
+		for (i = 0; i < n; i ++)
+		{
+			if (i != next && pro[i].a_time < curr_time && pro[i].r_time > 0)
+			{
+				pro[i].w_time ++;
+			}			
+		}
+				
+		pro[next].r_time --;   //after performing the job's remaining time decreases 1 unit
+		
+		// if a job has no remaining time then it is completed
+		if (pro[next].r_time <= 0)
+		{
+			completedProcesses ++; // no. of completed job increases
+		}
+		
+	}
