@@ -1,4 +1,4 @@
-/*---   SRTF (preemptive)   ---*/
+/*---   Shortest Remaining Time First (SRTF) (preemptive)   ---*/
 
 #include<stdio.h>
 
