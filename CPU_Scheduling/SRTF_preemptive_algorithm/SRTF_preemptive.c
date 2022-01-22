@@ -37,3 +37,23 @@ int main()
 		pro[i].r_time = pro[i].b_time;
 		pro[i].w_time = 0;
 	}
+	
+	/* Calculation and gnatt chart */
+	printf("\nGantt chart :\n");
+	
+	while (completedProcesses < n)
+	{
+		next = 0;
+		for (i = 0; i < n; i ++)
+		{
+			//selecting the next job
+			if ((pro[next].r_time > pro[i].r_time) && (pro[i].r_time > 0) && (pro[i].a_time <= curr_time))
+			{
+				next = i;
+			}
+		}
+		
+		//each job perform for one unit of time
+		curr_time ++;
+		
+		
