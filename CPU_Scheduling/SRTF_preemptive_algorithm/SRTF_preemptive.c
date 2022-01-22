@@ -77,3 +77,16 @@ int main()
 		}
 		
 	}
+	
+	/*Calculating averarge waiting time*/
+	for (i = 0; i < n; i ++)
+	{
+		total_w_time += pro[i].w_time;
+	}
+	avg_w_time = total_w_time/n;
+	
+	printf("\n\nAverage waiting time : %f\n",avg_w_time );
+	
+	
+	return 0;
+}
