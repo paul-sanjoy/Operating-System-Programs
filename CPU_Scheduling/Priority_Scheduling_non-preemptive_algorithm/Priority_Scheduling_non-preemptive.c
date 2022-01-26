@@ -47,4 +47,30 @@ int main()
 		id[pos]= temp;
 	}
 		
+		/* Calculating waiting time , turn around time */	
+	w_time[0]=0;	//waiting time for 1st process is zero
+	for(i=0;i<n;i++)
+	{
+		w_time[i]=0;
+		for(j=0;j<i;j++)
+		{
+			w_time[i] = w_time[i] + b_time[j];
+		}
+		ta_time[i] = w_time[i] + b_time[i];
+		sum_ta_time = sum_ta_time + ta_time[i];
+	}
 	
+	/* Output the result */	
+	printf("\nThe Gantt chart:\n");
+	for(i=0;i<n;i++)
+	{
+		printf("process %d : (%d - %d)\t", id[i] , w_time[i], b_time[i]+w_time[i]);
+	}
+	
+	avg_tat = (sum_ta_time/n);	
+	printf("\n\nAverage Turn around Time:\t%f unit",avg_tat);
+		
+			
+	return 0;		
+}
+
