@@ -22,3 +22,29 @@ int main()
         scanf("%d", &b_time[i]);
         
     }
+    
+    /* Sorting according to priority */
+    for(i=0;i<n;i++)
+    {
+    	pos = i;
+    	for(j=i+1;j<n;j++)
+    	{
+    		if(priority[j]<priority[pos])
+    			pos=j;
+		}
+		temp = priority[i];
+		priority[i] = priority[pos];
+		priority[pos]= temp;
+		
+		//sorting burst time w.r.t priority
+		temp = b_time[i];
+		b_time[i] = b_time[pos];
+		b_time[pos]= temp;
+		
+		//sorting process id w.r.t priority
+		temp = id[i];
+		id[i] = id[pos];
+		id[pos]= temp;
+	}
+		
+	
