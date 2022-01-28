@@ -35,3 +35,18 @@ int main()
 		
 		pro[i].r_time = pro[i].b_time;
 	}
+	
+	/* Calculating and printing gantt chart */
+	printf("\nGantt chart :\n");
+	
+	curr_time = pro[0].a_time;
+	
+	for (i = 1; i < n; i ++)
+	{
+		if (curr_time > pro[i].a_time)
+		{
+			curr_time = pro[i].a_time;
+		}
+	}
+	
+	
