@@ -49,4 +49,39 @@ int main()
 		}
 	}
 	
+		while (completedProcesses < n)
+	{
+		//maintain and select from queue
+		k = prev;
+		next = 0;
+		while (1)
+		{
+			k = (k + 1) % n;
+			if (pro[k].a_time <= curr_time && pro[k].r_time > 0)
+			{
+				next = k;
+				break;
+			}
+		}
+		
+		if (pro[next].r_time <= quantum) //if remaining time is less than time quantum
+		{
+			printf("process %d: (%d-%d);\t", next + 1, curr_time, curr_time + pro[next].r_time);
+			curr_time += pro[next].r_time;
+			pro[next].r_time = 0;
+			completedProcesses ++;
+		}
+		else  //if remaining time is greater than time quantum
+		{
+			
+			printf("process %d: (%d-%d);\t", next + 1, curr_time, curr_time + quantum);
+			curr_time += quantum;
+			pro[next].r_time -= quantum;
+		}
+		
+		prev = next;
+	}
 	
+	return 0 ;
+}
+
