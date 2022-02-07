@@ -50,3 +50,31 @@ int main()
 		proc[i].allocated = 0; //initially process is not allocated
 	}
 	
+	/*First fit algorithm with output*/
+	printf("\n\nAllocation is done using first fit algorithm:");
+	printf("\nProcess Id \tMemory Block Id \t  Used Memory \t\tUnused Memory");
+	for(i=0;i<np;i++)
+	{
+		for(j=0;j<nb;j++)
+		{
+			if(blck[j].unused >= proc[i].size)
+			{
+				blck[j].unused -= proc[i].size; //unused memory after process allocation
+				blck[j].used += proc[i].size; //used memory after process allocation
+				proc[i].allocated = 1;
+				
+				printf("\n  %d\t\t\t%d\t\t\t%d\t\t\t%d",proc[i].id,blck[j].id,blck[j].used,blck[j].unused);
+				break;
+			}
+			
+		}
+		
+		if(proc[i].allocated == 0)
+		{
+			printf("\n%d is not allocated",proc[i].id);
+		}
+	}
+	
+	return 0;
+	
+}
