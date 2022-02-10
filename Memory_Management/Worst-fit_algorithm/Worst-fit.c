@@ -50,4 +50,45 @@ int main()
 		proc[i].allocated = 0; //initially process is not allocated
 	}
 	
+	/* Worst fit algorithm with output */
+	printf("\n\nAllocation is done using worst fit algorithm:");
+	printf("\nProcess Id \tMemory Block Id \t  Used Memory \t\tUnused Memory");
+	
+	for(i=0;i<np;i++)
+	{
+		highest = -1; // to store the highest unused memory
+		
+		for(j=0;j<nb;j++)
+		{
+			//determining the highest unused memory which is greater than process size
+			if(blck[j].unused >= proc[i].size ) //if unused memory is greater or equal to process size
+			{
+				//then process can be allocated
+				proc[i].allocated = 1;
+				
+				if(blck[j].unused > highest)
+				{
+					highest = blck[j].unused; //update highest
+					index = j ;		//index denotes the index of highest unused memory block					
+				}
+			}
+			
+		}
+		
+		if(proc[i].allocated == 1)
+		{
+			blck[index].unused -= proc[i].size; //unused memory after process allocation
+			blck[index].used += proc[i].size;   //used memory after process allocation
+			
+			printf("\n  %d\t\t\t%d\t\t\t%d\t\t\t%d",proc[i].id,blck[index].id,blck[index].used,blck[index].unused);
+		}
+		else
+		{
+			printf("\nProcess %d is not allocated.",proc[i].id);
+		}
+	}
+	
+	return 0;
+	
+}
 	
