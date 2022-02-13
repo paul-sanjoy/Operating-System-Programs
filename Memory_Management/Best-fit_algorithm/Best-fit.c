@@ -1,4 +1,4 @@
-
+/*   Best fit algorithm   */
 
 #include<stdio.h>
 
