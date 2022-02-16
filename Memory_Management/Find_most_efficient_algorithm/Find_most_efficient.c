@@ -1,4 +1,4 @@
-
+/*   Find most efficient algorithm   */
 
 /*
 Criteria used for finding the most efficient algorithm for a given set of data:
@@ -211,4 +211,52 @@ int main()
 		proc3[i].allocated = 0;
 	}
 	
+		/*process and Outputs*/
+	totalFrag1 = firstFit(blck1,proc1,nb,np,&num1);
+	totalFrag2 = worstFit(blck2,proc2,nb,np,&num2);	
+	totalFrag3 = bestFit(blck3,proc3,nb,np,&num3);
 	
+	showChart(totalFrag1,totalFrag2,totalFrag3,num1,num2,num3);
+	
+	printf("\n-----------------------------------------------------------");
+	printf("\n\nThe best algorithm for this data set is: ");
+	if(num1 < num2 && num1 < num3)
+		printf("first fit");
+	else if (num2 < num1 && num2 < num3)
+		printf("worst fit");
+	else if (num3 < num1 && num3< num2)
+		printf("best fit");
+	else if (num1 == num2 && num1 < num3 && num2 < num3)
+	{
+		if (totalFrag1 < totalFrag2)
+			printf("first fit");
+		else
+			printf("worst fit");
+	}
+	else if (num2 == num3 && num2< num1 && num3 < num1 )
+	{
+		if (totalFrag2 < totalFrag3)
+			printf("worst fit");
+		else
+			printf("best fit");
+	}
+	else if (num3 == num1 && num3 < num2 && num1 < num2)
+	{
+		if (totalFrag3 < totalFrag1)
+			printf("best fit");
+		else
+			printf("first fit");
+	}
+	else //if num1==num2==num3
+	{
+		if(totalFrag1 <= totalFrag2 && totalFrag1 <= totalFrag3) //if fragments are same, first fit is declared efficient
+			printf("first fit");
+		else if(totalFrag2 < totalFrag1 && totalFrag2 < totalFrag3)
+			printf("worst fit");
+		else
+			printf("best fit");
+	}
+	
+	return 0 ;
+}
+
