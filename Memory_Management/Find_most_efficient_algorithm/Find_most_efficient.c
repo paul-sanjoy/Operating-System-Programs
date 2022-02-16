@@ -167,4 +167,48 @@ void showChart(int totalFrag1, int totalFrag2, int totalFrag3,int num1,int num2,
 }
 
 
-
+int main()
+{
+	int i,j,nb,np,temp,totalFrag1=0, totalFrag2=0, totalFrag3=0, num1 =0, num2 =0, num3=0;
+	
+	/*Inputs and initialization*/
+	printf("Enter the number of Memory blocks: ");
+	scanf("%d",&nb);
+	
+	mBlock blck1[nb];
+	mBlock blck2[nb];
+	mBlock blck3[nb];
+	
+	printf("Enter the size of the memory blocks: ");
+	for(i=0;i<nb;i++)
+	{
+		scanf("%d",&temp);
+		blck1[i].unused = temp ;
+		blck1[i].used = 0 ;		
+		blck2[i].unused = temp ;
+		blck2[i].used = 0 ;	 
+		blck3[i].unused = temp ;
+		blck3[i].used = 0 ;	
+	}
+	
+	
+	printf("\nEnter the number of Processes: ");
+	scanf("%d",&np);
+	
+	Process proc1[np];
+	Process proc2[np];
+	Process proc3[np];
+	
+	printf("Enter the size of the Processes: ");
+	for(i=0;i<np;i++)
+	{
+		scanf("%d",&temp);
+		proc1[i].size = temp;
+		proc1[i].allocated = 0;
+		proc2[i].size = temp;
+		proc2[i].allocated = 0;
+		proc3[i].size = temp;
+		proc3[i].allocated = 0;
+	}
+	
+	
