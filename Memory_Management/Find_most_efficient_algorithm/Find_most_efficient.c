@@ -154,4 +154,17 @@ int bestFit(mBlock blck[],Process proc[],int nb ,int np,int *num)
 }
 
 
+/*showing the total fragmentation nad no. of not allocated processes of each algorithm*/
+void showChart(int totalFrag1, int totalFrag2, int totalFrag3,int num1,int num2,int num3)
+{
+	printf("\nWith this data set:- ");
+	printf("\n\nFor first fit: ");
+	printf("\tno. of processes that are not allocated: %d,\tTotal Fragmentation: %d",num1,totalFrag1);
+	printf("\n\nFor worst fit: ");
+	printf("\tno. of processes that are not allocated: %d,\tTotal Fragmentation: %d",num2,totalFrag2);
+	printf("\n\nFor best fit: ");
+	printf("\tno. of processes that are not allocated: %d,\tTotal Fragmentation: %d",num3,totalFrag3);
+}
+
+
 
