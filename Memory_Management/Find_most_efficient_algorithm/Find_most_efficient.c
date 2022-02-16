@@ -133,4 +133,25 @@ int bestFit(mBlock blck[],Process proc[],int nb ,int np,int *num)
 			
 		}
 		
-		
+		if(proc[i].allocated == 1)
+		{
+			blck[index].unused -= proc[i].size; //unused memory after process allocation
+			blck[index].used += proc[i].size;   //used memory after process allocation
+		}
+		else
+		{
+			(*num)++; //no. of not allocated processes 
+		}
+	}
+	for(i=0; i<=nb;i++ ) //calculate total fragmentation
+	{
+		if(blck[i].used != 0)
+			totalFrag += blck[i].unused;
+	}
+	
+	return totalFrag;
+	
+}
+
+
+
