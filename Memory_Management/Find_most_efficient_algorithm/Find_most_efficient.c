@@ -107,4 +107,30 @@ int worstFit(mBlock blck[],Process proc[],int nb ,int np,int *num)
 }
 
 
-
+/*best fit algorithm*/
+int bestFit(mBlock blck[],Process proc[],int nb ,int np,int *num)
+{
+	int i , j ,totalFrag=0, lowest , index;
+	
+	for(i=0;i<np;i++)
+	{
+		lowest = 99999; // to store the lowest unused memory
+		
+		for(j=0;j<nb;j++)
+		{
+			//determining the lowest unused memory which is greater than process size
+			if(blck[j].unused >= proc[i].size ) //if unused memory is greater or equal to process size
+			{
+				//then process can be allocated
+				proc[i].allocated = 1;
+				
+				if(blck[j].unused < lowest)
+				{
+					lowest = blck[j].unused; //update lowest
+					index = j ;		//index denotes the index of lowest unused memory block					
+				}
+			}
+			
+		}
+		
+		
