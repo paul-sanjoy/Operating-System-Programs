@@ -1,4 +1,4 @@
-
+/*   LRU algorithm   */
 
 #include<stdio.h>
 
@@ -55,4 +55,47 @@ int main()
 	printf("\nPage frame status after each page request: ");
 	printf("\nPage Reference\t\tHit/Miss\tPage Frame Status\n");
 	
+	for(i=0; i<n; i++)
+	{
+		printf("\n  %d",ref_seq[i]);
+		if(!isPresent(framesTable, numFrames, ref_seq[i]))	//if the requested page is present
+		{
+			printf("\t\t\tMiss\t ");
+			for(j=0; j<numFrames; j++)
+			{
+				current = framesTable[j];	//one of current pages in table
+				for(k = i-1; k>= 0; k--)	//check the past pages in sequence
+				{
+					if(current == ref_seq[k])	//when current page is found among past pages in seq.
+					{
+						lastPos[j] = k;		//store the index
+						flag=1;
+						break;
+					}	
+				}
+				if(flag == 0)	//if current page is not found in past seq
+					lastPos[j] = -1;	//this initialization is important
+			}
+			min = 99999;
+			for(j=0; j<numFrames; j++)
+			{
+				if(lastPos[j] < min)	//check the furthest from the indexes
+				{
+					min = lastPos[j];
+					lruIndex = j;		//store the index of furthest
+				}
+			}
+			framesTable[lruIndex] = ref_seq[i];		//replace the page which is furthest in past of seq.
+			numFaults++;
+			
+			printTable(framesTable, numFrames);
+			
+		}
+		else
+			printf("\t\t\tHit\t ");
+	}
+	printf("\n\nTotal number of page faults: %d", numFaults);
 	
+	return 0;
+	
+}
